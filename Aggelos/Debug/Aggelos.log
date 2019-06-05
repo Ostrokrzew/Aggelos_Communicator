@@ -1,2 +1,6 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Aggelos.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.cpp
+E:\OneDrive\Dokumenty\source\repos\Aggelos\Aggelos\main.cpp(78,23): warning C4018:  "<": niezgodność typu ze znakiem/bez znaku
+E:\OneDrive\Dokumenty\source\repos\Aggelos\Aggelos\main.cpp(98,24): warning C4018:  "<": niezgodność typu ze znakiem/bez znaku
+E:\OneDrive\Dokumenty\source\repos\Aggelos\Aggelos\main.cpp(110,24): warning C4018:  "<": niezgodność typu ze znakiem/bez znaku
   Aggelos.vcxproj -> E:\OneDrive\Dokumenty\source\repos\Aggelos\Debug\Aggelos_Server.exe

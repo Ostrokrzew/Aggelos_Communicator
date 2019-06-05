@@ -2,8 +2,10 @@
 #include <WS2tcpip.h>
 #include <string>
 #include <sstream>
+#include <ctime>
 
 #pragma comment (lib, "ws2_32.lib")
+#pragma warning(disable:4996)
 
 using namespace std;
 
@@ -45,6 +47,14 @@ int main() {
 
 	while (true) {
 		fd_set copy = master;
+		//Pobieranie czasu
+		time_t lcltm;
+		time(&lcltm);
+		char tmbuf[64];
+		ZeroMemory(tmbuf, 64);
+		struct tm* timeinfo;
+		timeinfo = localtime(&lcltm);
+		strftime(tmbuf, 64, "%r %A, %d %b", timeinfo);
 
 		int socketCounter = select(0, &copy, nullptr, nullptr, nullptr);
 
@@ -69,7 +79,7 @@ int main() {
 					SOCKET sendSocket = master.fd_array[i];
 					if (sendSocket != listenSocket && sendSocket != sock) {
 						ostringstream ss;
-						ss << "SOCKET #" << clientSocket << " joined conversaton" << std::endl;
+						ss << "SOCKET #" << clientSocket << " joined conversation at " << tmbuf << std::endl;
 						string sendString = ss.str();
 						send(sendSocket, sendString.c_str(), sendString.size() + 1, 0);
 					}
@@ -89,7 +99,7 @@ int main() {
 						SOCKET sendSocket = master.fd_array[i];
 						if (sendSocket != listenSocket && sendSocket != sock) {
 							ostringstream ss;
-							ss << "SOCKET #" << sock << " left conversaton" << std::endl;
+							ss << "SOCKET #" << sock << " left conversation at " << tmbuf << std::endl;
 							string sendString = ss.str();
 							send(sendSocket, sendString.c_str(), sendString.size() + 1, 0);
 						}
