@@ -1,5 +1,8 @@
 Biésów Smãtk
-v.0.2.1
+v 0.2.2
+
+v.0.2.2:
+Encountering problems with server code refactoring, but maded GUI for it.
 
 v.0.2.1:
 Added time display when joining and leaving conversation.
